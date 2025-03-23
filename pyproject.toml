@@ -3,7 +3,7 @@ requires = ["setuptools>=77.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-dynamic = ["version", "dependencies", "optional-dependencies"]
+dynamic = ["version"]
 name = "flaskdev"
 requires-python = ">=3.10"
 description = "flask dev"
@@ -12,10 +12,9 @@ classifiers = [
     "Framework :: Flask",
     "License :: MIT",
 ]
-
-[tool.setuptools.dynamic]
-dependencies = {file = ["requirements.txt"]}
-optional-dependencies = {dev = { file = ["requirements-dev.txt"] }}
+dependencies = [
+    "Flask == 3.1.0"
+]
 
 [tool.pytest.ini_options]
 addopts = "--cov=flaskdev"
