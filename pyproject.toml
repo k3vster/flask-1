@@ -1,6 +1,21 @@
 [build-system]
-requires = ["setuptools>=42.0", "wheel"]
+requires = ["setuptools>=77.0", "wheel"]
 build-backend = "setuptools.build_meta"
+
+[project]
+dynamic = ["version", "dependencies", "optional-dependencies"]
+name = "flaskdev"
+requires-python = ">=3.10"
+description = "flask dev"
+readme = "README.md"
+classifiers = [
+    "Framework :: Flask",
+    "License :: MIT",
+]
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
+optional-dependencies = {dev = { file = ["requirements-dev.txt"] }}
 
 [tool.pytest.ini_options]
 addopts = "--cov=flaskdev"
@@ -22,3 +37,9 @@ warn_unreachable = true
 warn_unused_configs = true
 no_implicit_reexport = true
 follow_imports = "skip"
+
+[tool.black]
+line-length = 160
+
+[tool.isort]
+profile = "black"

@@ -1,13 +1,16 @@
 import pytest
+
 from flaskdev.app import app
 
 
 @pytest.fixture(scope="session")
 def app_test():
     app_test = app
-    app_test.config.update({
-        "TESTING": True,
-    })
+    app_test.config.update(
+        {
+            "TESTING": True,
+        }
+    )
 
     # other setup can go here
 
