@@ -5,6 +5,7 @@ app = Flask(__name__, template_folder="templates")
 
 @app.route('/')
 def index():
+    # return(app.root_path)
     return render_template("index.html", myvalue="heyo")
 
 
@@ -19,7 +20,7 @@ def hello():
 
 
 @app.route("/test", methods=["GET", "POST", "THUG"])
-def test():
+def run_test():
     response = make_response()
     response.status_code = 200
 
@@ -31,9 +32,10 @@ def test():
 def greet(name):
     return f"whattup {name}"
 
+
 @app.route("/pow/<int:num1>/<int:num2>")
 def sitepow(num1: int, num2: int) -> str:
-    return f"{pow(num1,num2)}"
+    return f"{pow(num1, num2)}"
 
 
 @app.route("/handle_url_params")
@@ -45,7 +47,5 @@ def handle_params():
     return f"{name} {pw} {greet}"
 
 
-
-
-if __name__  == "__main__":
+if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True)
